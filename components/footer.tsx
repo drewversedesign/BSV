@@ -1,9 +1,20 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { Mail, Info, FileText } from "lucide-react";
+import { Mail, Info, FileText, CheckCircle2 } from "lucide-react";
 
 export default function Footer() {
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubscribed(true);
+    setTimeout(() => setSubscribed(false), 5000);
+  };
+
   return (
-    <footer className="w-full py-12 mt-auto bg-slate-50 border-t border-slate-200">
+    <footer id="contact" className="w-full py-12 mt-auto bg-slate-50 border-t border-slate-200">
       <div className="max-w-[1440px] mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div className="lg:col-span-1">
           <span className="text-lg font-bold text-slate-900 mb-4 block">BSV Premium</span>
@@ -36,16 +47,24 @@ export default function Footer() {
         <div>
           <h4 className="font-bold text-slate-900 mb-6 text-xs uppercase tracking-widest">Newsletter</h4>
           <p className="text-sm text-slate-500 mb-4">Get daily seizure alerts direct to your inbox.</p>
-          <div className="flex gap-2">
-            <input
-              className="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm w-full focus:ring-2 focus:ring-blue-600/20 outline-none"
-              placeholder="Email address"
-              type="email"
-            />
-            <button className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700">
-              <Mail className="w-5 h-5" />
-            </button>
-          </div>
+          {subscribed ? (
+            <div className="flex items-center gap-2 text-green-600 bg-green-50 p-3 rounded-lg border border-green-100">
+              <CheckCircle2 className="w-5 h-5" />
+              <span className="text-sm font-medium">Successfully subscribed!</span>
+            </div>
+          ) : (
+            <form onSubmit={handleSubscribe} className="flex gap-2">
+              <input
+                required
+                className="bg-white border border-slate-200 rounded-lg px-4 py-2 text-sm w-full focus:ring-2 focus:ring-blue-600/20 outline-none"
+                placeholder="Email address"
+                type="email"
+              />
+              <button type="submit" className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors">
+                <Mail className="w-5 h-5" />
+              </button>
+            </form>
+          )}
         </div>
       </div>
       <div className="max-w-[1440px] mx-auto px-8 mt-12 pt-8 border-t border-slate-200">

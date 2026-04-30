@@ -5,10 +5,10 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Find a Vehicle", href: "#" },
-  { label: "How it Works", href: "#" },
+  { label: "Find a Vehicle", href: "#auctions" },
+  { label: "How it Works", href: "#how-it-works" },
   { label: "Auctions", href: "#auctions" },
-  { label: "Contact", href: "#" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -20,6 +20,8 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const authUrl = "https://ep-plain-sea-ansr4t8r.neonauth.c-6.us-east-1.aws.neon.tech/neondb/auth";
 
   return (
     <header
@@ -57,11 +59,12 @@ export default function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <button
-            className="px-6 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-blue-700 transition-all active:scale-95"
+          <Link
+            href={authUrl}
+            className="px-6 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-blue-700 transition-all active:scale-95 text-center"
           >
             Sign In
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Toggle */}
@@ -86,12 +89,13 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <button
-            className="mt-2 px-6 py-2 rounded-lg bg-primary text-white font-semibold"
+          <Link
+            href={authUrl}
+            className="mt-2 px-6 py-2 rounded-lg bg-primary text-white font-semibold text-center"
             onClick={() => setIsOpen(false)}
           >
             Sign In
-          </button>
+          </Link>
         </div>
       )}
     </header>
