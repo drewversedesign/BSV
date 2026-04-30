@@ -1,0 +1,56 @@
+
+> bsv-app@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+✓ Ready in 499ms
+
+○ Compiling / ...
+ GET / 200 in 5.7s (next.js: 4.9s, application-code: 733ms)
+ GET / 200 in 244ms (next.js: 5ms, application-code: 240ms)
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <Navbar>
+                <main>
+                <Footer>
+                  <footer className="bg-card bo...">
+                    <div className="max-w-7xl ...">
+                      <div className="grid grid-...">
+                        <div className="md:col-spa...">
+                          <LinkComponent>
+                          <p>
+                          <div className="flex flex-...">
+                            <p>
+                            <form className="flex gap-2" onSubmit={function onSubmit} aria-label="Newsletter...">
+                              <input
+                                type="email"
+                                placeholder="your@email.com"
+                                className="flex-1 px-3 py-2 rounded-md bg-background border border-border text-foregro..."
+                                aria-label="Email address"
+-                               style={{caret-color:"transparent"}}
+                              >
+                              ...
+                        ...
+                      ...
+            ...
+          ...
