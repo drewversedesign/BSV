@@ -2,6 +2,7 @@ import Navbar from "@/components/navbar";
 import Hero from "@/components/hero";
 import Features from "@/components/features";
 import VehicleCards, { Vehicle } from "@/components/vehicle-cards";
+import CTA from "@/components/cta";
 import Footer from "@/components/footer";
 import { sql } from "@/lib/db";
 
@@ -21,6 +22,7 @@ export default async function HomePage() {
         <Hero />
         <Features />
         <VehicleCards initialVehicles={vehicles} />
+        <CTA />
       </main>
       <Footer />
     </>

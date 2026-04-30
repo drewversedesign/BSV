@@ -1,28 +1,34 @@
 @import 'tailwindcss';
 
 :root {
-  /* Dark automotive theme — always-dark palette */
-  --background: oklch(0.10 0 0);
-  --foreground: oklch(0.97 0 0);
-  --card: oklch(0.14 0 0);
-  --card-foreground: oklch(0.97 0 0);
-  --popover: oklch(0.14 0 0);
-  --popover-foreground: oklch(0.97 0 0);
-  /* Brand red accent */
-  --primary: oklch(0.60 0.22 27);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.18 0 0);
-  --secondary-foreground: oklch(0.97 0 0);
-  --muted: oklch(0.18 0 0);
-  --muted-foreground: oklch(0.55 0 0);
-  /* Warm gold accent */
-  --accent: oklch(0.76 0.14 75);
-  --accent-foreground: oklch(0.10 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.97 0 0);
-  --border: oklch(0.22 0 0);
-  --input: oklch(0.22 0 0);
-  --ring: oklch(0.60 0.22 27);
+  --background: #f9f9ff;
+  --foreground: #181c23;
+
+  --card: #ffffff;
+  --card-foreground: #181c23;
+
+  --popover: #ffffff;
+  --popover-foreground: #181c23;
+
+  --primary: #0059b5;
+  --primary-foreground: #ffffff;
+
+  --secondary: #0060aa;
+  --secondary-foreground: #ffffff;
+
+  --muted: #F5F5F7;
+  --muted-foreground: #6E6E73;
+
+  --accent: #FF791B;
+  --accent-foreground: #ffffff;
+
+  --destructive: #ba1a1a;
+  --destructive-foreground: #ffffff;
+
+  --border: #E8E8ED;
+  --input: #E8E8ED;
+  --ring: #0059b5;
+
   --radius: 0.5rem;
 }
 

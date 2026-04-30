@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Gauge } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
+  { label: "Find a Vehicle", href: "#" },
+  { label: "How it Works", href: "#" },
   { label: "Auctions", href: "#auctions" },
-  { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "About", href: "#about" },
+  { label: "Contact", href: "#" },
 ];
 
 export default function Navbar() {
@@ -23,25 +23,22 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
+          ? "bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm"
+          : "bg-white/80 backdrop-blur-md border-b border-slate-100"
       }`}
     >
       <nav
-        className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16"
+        className="max-w-[1440px] mx-auto px-8 flex items-center justify-between h-[64px]"
         aria-label="Main navigation"
       >
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-2 text-foreground font-bold text-xl tracking-tight"
+          className="text-xl font-bold tracking-tight text-slate-900"
         >
-          <Gauge className="w-6 h-6 text-primary" aria-hidden="true" />
-          <span>
-            Rev<span className="text-primary">Auction</span>
-          </span>
+          BSV Premium
         </Link>
 
         {/* Desktop Links */}
@@ -50,7 +47,7 @@ export default function Navbar() {
             <li key={link.label}>
               <Link
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className="text-slate-600 hover:text-blue-600 transition-colors duration-200 text-[17px] font-medium"
               >
                 {link.label}
               </Link>
@@ -59,52 +56,42 @@ export default function Navbar() {
         </ul>
 
         {/* CTA */}
-        <div className="hidden md:flex items-center gap-3">
-          <Link
-            href="#"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+        <div className="hidden md:flex items-center gap-4">
+          <button
+            className="px-6 py-2 rounded-lg bg-primary text-white font-semibold hover:bg-blue-700 transition-all active:scale-95"
           >
             Sign In
-          </Link>
-          <Link
-            href="#auctions"
-            className="px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
-          >
-            Bid Now
-          </Link>
+          </button>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-foreground p-2"
+          className="md:hidden text-slate-900 p-2"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isOpen}
         >
-          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </nav>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-card border-b border-border px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-b border-slate-100 px-8 py-6 flex flex-col gap-4">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="text-slate-600 hover:text-blue-600 font-medium"
               onClick={() => setIsOpen(false)}
             >
               {link.label}
             </Link>
           ))}
-          <Link
-            href="#auctions"
-            className="mt-2 px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm font-semibold text-center hover:bg-primary/90 transition-colors"
+          <button
+            className="mt-2 px-6 py-2 rounded-lg bg-primary text-white font-semibold"
             onClick={() => setIsOpen(false)}
           >
-            Bid Now
-          </Link>
+            Sign In
+          </button>
         </div>
       )}
     </header>
